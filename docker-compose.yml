@@ -2,16 +2,15 @@ services:
   postgres:
     image: postgres:latest
     container_name: ecommerce_db
-    restart: always
+    restart: "no"
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_DB: ecommerce
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql
 
 volumes:
   postgres_data:
